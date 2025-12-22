@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kimonos Sashiko - Artesanía Japonesa</title>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+
+      .sashiko-pattern {
+        background-image: linear-gradient(
+            45deg,
+            transparent 48%,
+            currentColor 48%,
+            currentColor 52%,
+            transparent 52%
+          ),
+          linear-gradient(
+            -45deg,
+            transparent 48%,
+            currentColor 48%,
+            currentColor 52%,
+            transparent 52%
+          );
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
+        opacity: 0.1;
+      }
+
+      .kimono-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .kimono-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .fade-in {
+        animation: fadeIn 0.8s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .btn-primary {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .btn-primary:hover:before {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body class="h-full">
+    <div
+      id="app-wrapper"
+      class="h-full w-full overflow-auto"
+      style="
+        background: linear-gradient(135deg, #fdd835 0%, #fbc02d 100%);
+        font-family: 'Montserrat', sans-serif;
+      "
+    >
+      <!-- Hero Section -->
+      <header
+        class="relative min-h-screen flex items-center justify-center px-6 py-16"
+      >
+        <div
+          class="absolute inset-0 sashiko-pattern"
+          style="color: #f44336"
+        ></div>
+        <div class="relative max-w-6xl mx-auto text-center fade-in">
+          <div class="mb-8">
+            <svg
+              class="w-24 h-24 mx-auto mb-6"
+              viewbox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M50 10 L70 30 L60 50 L70 70 L50 90 L30 70 L40 50 L30 30 Z"
+                fill="#F44336"
+                opacity="0.8"
+              />
+              <circle cx="50" cy="50" r="8" fill="#1565C0" />
+              <path
+                d="M35 35 L50 50 M65 35 L50 50 M50 50 L35 65 M50 50 L65 65"
+                stroke="#1565C0"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <h1
+            id="hero-title"
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 px-4"
+            style="font-family: 'Cormorant Garamond', serif; color: #1565c0"
+          >
+            Kimonos Japoneses Artesanales
+          </h1>
+          <p
+            id="hero-subtitle"
+            class="text-xl sm:text-2xl md:text-3xl mb-6 font-light px-4"
+            style="color: #4caf50"
+          >
+            Bordado Sashiko, Parches y Upcycling
+          </p>
+          <p
+            id="hero-description"
+            class="text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed px-4"
+            style="color: #1565c0"
+          >
+            Cada kimono es una obra de arte única que combina técnicas
+            tradicionales japonesas con sostenibilidad moderna. Transformamos
+            textiles vintage en piezas excepcionales.
+          </p>
+          <button
+            id="cta-button"
+            class="btn-primary px-10 py-4 text-lg font-semibold rounded-full shadow-lg"
+            style="background-color: #f44336; color: #ffffff"
+          >
+            Explorar Colección
+          </button>
+        </div>
+      </header>
+      <!-- Features Section -->
+      <section class="py-20 px-6" style="background-color: #2196f3">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4"
+              style="font-family: 'Cormorant Garamond', serif; color: #ffffff"
+            >
+              Artesanía con Propósito
+            </h2>
+            <div
+              class="w-24 h-1 mx-auto"
+              style="background-color: #f44336"
+            ></div>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="kimono-card p-6 sm:p-8 rounded-2xl"
+              style="background-color: #fdd835"
+            >
+              <div
+                class="w-16 h-16 mb-6 mx-auto rounded-full flex items-center justify-center"
+                style="background-color: #f44336"
+              >
+                <svg
+                  class="w-8 h-8"
+                  viewbox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4z"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9 12l2 2 4-4"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3
+                id="feature-1-title"
+                class="text-xl sm:text-2xl font-bold mb-3 text-center"
+                style="font-family: 'Cormorant Garamond', serif; color: #1565c0"
+              >
+                Bordado Sashiko Tradicional
+              </h3>
+              <p
+                id="feature-1-description"
+                class="text-sm sm:text-base text-center leading-relaxed"
+                style="color: #1565c0"
+              >
+                Técnica centenaria de bordado japonés que refuerza y embellece
+                las telas con patrones geométricos únicos hechos a mano.
+              </p>
+            </div>
+            <!-- Feature 2 -->
+            <div
+              class="kimono-card p-6 sm:p-8 rounded-2xl"
+              style="background-color: #fdd835"
+            >
+              <div
+                class="w-16 h-16 mb-6 mx-auto rounded-full flex items-center justify-center"
+                style="background-color: #f44336"
+              >
+                <svg
+                  class="w-8 h-8"
+                  viewbox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="4"
+                    y="4"
+                    width="7"
+                    height="7"
+                    rx="1"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="13"
+                    y="4"
+                    width="7"
+                    height="7"
+                    rx="1"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="4"
+                    y="13"
+                    width="7"
+                    height="7"
+                    rx="1"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="13"
+                    y="13"
+                    width="7"
+                    height="7"
+                    rx="1"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h3
+                id="feature-2-title"
+                class="text-xl sm:text-2xl font-bold mb-3 text-center"
+                style="font-family: 'Cormorant Garamond', serif; color: #1565c0"
+              >
+                Parches Únicos
+              </h3>
+              <p
+                id="feature-2-description"
+                class="text-sm sm:text-base text-center leading-relaxed"
+                style="color: #1565c0"
+              >
+                Cada parche cuenta una historia. Seleccionamos cuidadosamente
+                textiles vintage para crear composiciones artísticas
+                irrepetibles.
+              </p>
+            </div>
+            <!-- Feature 3 -->
+            <div
+              class="kimono-card p-6 sm:p-8 rounded-2xl sm:col-span-2 lg:col-span-1"
+              style="background-color: #fdd835"
+            >
+              <div
+                class="w-16 h-16 mb-6 mx-auto rounded-full flex items-center justify-center"
+                style="background-color: #f44336"
+              >
+                <svg
+                  class="w-8 h-8"
+                  viewbox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2v20M12 2c-3 0-5 2-5 5v10c0 3 2 5 5 5m0-20c3 0 5 2 5 5v10c0 3-2 5-5 5"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="3"
+                    stroke="#ffffff"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h3
+                id="feature-3-title"
+                class="text-xl sm:text-2xl font-bold mb-3 text-center"
+                style="font-family: 'Cormorant Garamond', serif; color: #1565c0"
+              >
+                Upcycling Sostenible
+              </h3>
+              <p
+                id="feature-3-description"
+                class="text-sm sm:text-base text-center leading-relaxed"
+                style="color: #1565c0"
+              >
+                Damos nueva vida a textiles vintage japoneses, reduciendo el
+                desperdicio y preservando la historia cultural de cada pieza.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Gallery Preview -->
+      <section
+        class="py-20 px-6"
+        style="background: linear-gradient(135deg, #fdd835 0%, #fbc02d 100%)"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12 sm:mb-16">
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4"
+              style="font-family: 'Cormorant Garamond', serif; color: #1565c0"
+            >
+              Nuestras Creaciones
+            </h2>
+            <p class="text-lg sm:text-xl px-4" style="color: #1565c0">
+              Piezas únicas que fusionan tradición y modernidad
+            </p>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-12">
+            <div
+              class="kimono-card rounded-2xl overflow-hidden"
+              style="background-color: #2196f3"
+            >
+              <div
+                class="h-64 sm:h-72 md:h-80 flex items-center justify-center"
+                style="
+                  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+                "
+              >
+                <svg
+                  class="w-24 h-24 sm:w-32 sm:h-32"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 30 L50 15 L80 30 L80 70 L50 85 L20 70 Z"
+                    fill="#F44336"
+                    opacity="0.5"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="20"
+                    fill="none"
+                    stroke="#FDD835"
+                    stroke-width="3"
+                  />
+                  <path
+                    d="M30 50 L70 50 M50 30 L50 70"
+                    stroke="#FDD835"
+                    stroke-width="3"
+                  />
+                </svg>
+              </div>
+              <div class="p-4 sm:p-6">
+                <h3
+                  class="text-xl sm:text-2xl font-bold mb-2"
+                  style="
+                    font-family: 'Cormorant Garamond', serif;
+                    color: #ffffff;
+                  "
+                >
+                  Kimono Índigo
+                </h3>
+                <p class="text-sm sm:text-base" style="color: #fdd835">
+                  Tela índigo vintage con bordado sashiko en patrones
+                  geométricos tradicionales
+                </p>
+              </div>
+            </div>
+            <div
+              class="kimono-card rounded-2xl overflow-hidden"
+              style="background-color: #2196f3"
+            >
+              <div
+                class="h-64 sm:h-72 md:h-80 flex items-center justify-center"
+                style="
+                  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+                "
+              >
+                <svg
+                  class="w-24 h-24 sm:w-32 sm:h-32"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="25"
+                    y="25"
+                    width="50"
+                    height="50"
+                    rx="5"
+                    fill="none"
+                    stroke="#FDD835"
+                    stroke-width="3"
+                  />
+                  <path
+                    d="M25 50 L75 50 M50 25 L50 75 M35 35 L65 65 M65 35 L35 65"
+                    stroke="#FDD835"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="p-4 sm:p-6">
+                <h3
+                  class="text-xl sm:text-2xl font-bold mb-2"
+                  style="
+                    font-family: 'Cormorant Garamond', serif;
+                    color: #ffffff;
+                  "
+                >
+                  Kimono Boro
+                </h3>
+                <p class="text-sm sm:text-base" style="color: #fdd835">
+                  Técnica boro con múltiples parches de telas vintage japonesas
+                  cuidadosamente seleccionadas
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              class="btn-primary px-8 py-3 font-semibold rounded-full"
+              style="background-color: #4caf50; color: #ffffff"
+            >
+              Ver Toda la Colección
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- CTA Section -->
+      <section class="py-16 sm:py-20 px-6" style="background-color: #1565c0">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 px-4"
+            style="font-family: 'Cormorant Garamond', serif; color: #fdd835"
+          >
+            Posee una Pieza de Historia
+          </h2>
+          <p
+            class="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 leading-relaxed px-4"
+            style="color: #ffffff"
+          >
+            Cada kimono es único y está hecho con amor, paciencia y respeto por
+            la tradición japonesa. Únete a nuestra comunidad de amantes de la
+            artesanía sostenible.
+          </p>
+          <button
+            class="btn-primary px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full shadow-lg"
+            style="background-color: #f44336; color: #ffffff"
+          >
+            Contactar Ahora
+          </button>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section class="py-12 sm:py-16 px-6" style="background-color: #fdd835">
+        <div class="max-w-4xl mx-auto">
+          <h2
+            class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center px-4"
+            style="font-family: 'Cormorant Garamond', serif; color: #1565c0"
+          >
+            Visítanos
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-8">
+            <!-- Address -->
+            <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-lg">
+              <div class="flex items-start mb-4">
+                <svg
+                  class="w-6 h-6 mr-3 flex-shrink-0"
+                  style="color: #f44336"
+                  viewbox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div>
+                  <h3
+                    class="font-bold text-base sm:text-lg mb-2"
+                    style="color: #1565c0"
+                  >
+                    Dirección
+                  </h3>
+                  <p
+                    class="text-xs sm:text-sm leading-relaxed"
+                    style="color: #1565c0"
+                  >
+                    Toltecas 166<br />
+                    San Pedro de los Pinos<br />
+                    CP 01180
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Phone -->
+            <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-lg">
+              <div class="flex items-start mb-4">
+                <svg
+                  class="w-6 h-6 mr-3 flex-shrink-0"
+                  style="color: #4caf50"
+                  viewbox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 15.5c-1.2 0-2.4-.2-3.5-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div>
+                  <h3
+                    class="font-bold text-base sm:text-lg mb-2"
+                    style="color: #1565c0"
+                  >
+                    Teléfono
+                  </h3>
+                  <p class="text-xs sm:text-sm" style="color: #1565c0">
+                    <a href="tel:5610677516" class="hover:underline"
+                      >56 1067 7516</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Social Media -->
+          <div class="text-center">
+            <h3
+              class="font-bold text-lg sm:text-xl mb-6 px-4"
+              style="color: #1565c0"
+            >
+              Síguenos en Redes Sociales
+            </h3>
+            <div class="flex justify-center gap-3 sm:gap-4 flex-wrap px-4">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+                style="background-color: #f44336"
+              >
+                <svg
+                  class="w-5 h-5 sm:w-6 sm:h-6"
+                  style="color: #ffffff"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                  /></svg
+              ></a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+                style="background-color: #2196f3"
+              >
+                <svg
+                  class="w-5 h-5 sm:w-6 sm:h-6"
+                  style="color: #ffffff"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"
+                  /></svg
+              ></a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+                style="background-color: #1565c0"
+              >
+                <svg
+                  class="w-5 h-5 sm:w-6 sm:h-6"
+                  style="color: #ffffff"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  /></svg
+              ></a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+                style="background-color: #f44336"
+              >
+                <svg
+                  class="w-5 h-5 sm:w-6 sm:h-6"
+                  style="color: #ffffff"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+                  /></svg
+              ></a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+                style="background-color: #4caf50"
+              >
+                <svg
+                  class="w-5 h-5 sm:w-6 sm:h-6"
+                  style="color: #ffffff"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="py-8 px-6 text-center" style="background-color: #4caf50">
+        <p id="footer-text" class="text-sm" style="color: #ffffff">
+          Hecho con amor y tradición © 2024
+        </p>
+      </footer>
+      <!-- Chat Bot -->
+      <div
+        id="chatbot-container"
+        class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50"
+      >
+        <!-- Chat Button -->
+        <button
+          id="chat-toggle"
+          class="w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110"
+          style="background-color: #f44336"
+        >
+          <svg
+            id="chat-icon"
+            class="w-7 h-7 sm:w-8 sm:h-8"
+            style="color: #ffffff"
+            viewbox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"
+            />
+          </svg>
+          <svg
+            id="close-icon"
+            class="w-7 h-7 sm:w-8 sm:h-8 hidden"
+            style="color: #ffffff"
+            viewbox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6l12 12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <!-- Chat Window -->
+        <div
+          id="chat-window"
+          class="hidden absolute bottom-20 right-0 w-screen max-w-sm sm:w-80 md:w-96 rounded-2xl shadow-2xl overflow-hidden mx-4 sm:mx-0"
+          style="background-color: #ffffff; max-height: 70vh; max-height: 500px"
+        >
+          <!-- Chat Header -->
+          <div class="p-3 sm:p-4" style="background-color: #f44336">
+            <h3 class="font-bold text-base sm:text-lg text-white">
+              Asistente Virtual
+            </h3>
+            <p class="text-xs sm:text-sm text-white opacity-90">
+              Estamos aquí para ayudarte
+            </p>
+          </div>
+          <!-- Chat Messages -->
+          <div
+            id="chat-messages"
+            class="p-3 sm:p-4 overflow-y-auto"
+            style="height: 250px; background-color: #f8f4f0"
+          >
+            <div class="mb-4">
+              <div
+                class="inline-block p-2.5 sm:p-3 rounded-lg max-w-xs"
+                style="background-color: #2196f3; color: #ffffff"
+              >
+                <p class="text-xs sm:text-sm">
+                  ¡Hola! 👋 Bienvenido a Kimonos Sashiko. ¿En qué puedo
+                  ayudarte?
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Chat Options -->
+          <div
+            class="p-3 sm:p-4 border-t"
+            style="background-color: #ffffff; border-color: #e0e0e0"
+          >
+            <div class="space-y-2">
+              <button
+                class="chat-option w-full text-left p-2.5 sm:p-3 rounded-lg text-xs sm:text-sm transition-colors hover:opacity-80"
+                style="background-color: #fdd835; color: #1565c0"
+              >
+                📦 Ver productos disponibles
+              </button>
+              <button
+                class="chat-option w-full text-left p-2.5 sm:p-3 rounded-lg text-xs sm:text-sm transition-colors hover:opacity-80"
+                style="background-color: #fdd835; color: #1565c0"
+              >
+                📍 Información de ubicación
+              </button>
+              <button
+                class="chat-option w-full text-left p-2.5 sm:p-3 rounded-lg text-xs sm:text-sm transition-colors hover:opacity-80"
+                style="background-color: #fdd835; color: #1565c0"
+              >
+                💬 Hablar con un asesor
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const defaultConfig = {
+        background_color: "#FDD835",
+        surface_color: "#2196F3",
+        text_color: "#1565C0",
+        primary_action_color: "#F44336",
+        secondary_action_color: "#4CAF50",
+        hero_title: "Kimonos Japoneses Artesanales",
+        hero_subtitle: "Bordado Sashiko, Parches y Upcycling",
+        hero_description:
+          "Cada kimono es una obra de arte única que combina técnicas tradicionales japonesas con sostenibilidad moderna. Transformamos textiles vintage en piezas excepcionales.",
+        cta_button: "Explorar Colección",
+        feature_1_title: "Bordado Sashiko Tradicional",
+        feature_1_description:
+          "Técnica centenaria de bordado japonés que refuerza y embellece las telas con patrones geométricos únicos hechos a mano.",
+        feature_2_title: "Parches Únicos",
+        feature_2_description:
+          "Cada parche cuenta una historia. Seleccionamos cuidadosamente textiles vintage para crear composiciones artísticas irrepetibles.",
+        feature_3_title: "Upcycling Sostenible",
+        feature_3_description:
+          "Damos nueva vida a textiles vintage japoneses, reduciendo el desperdicio y preservando la historia cultural de cada pieza.",
+        footer_text: "Hecho con amor y tradición © 2024",
+      };
+
+      async function onConfigChange(config) {
+        const appWrapper = document.getElementById("app-wrapper");
+        appWrapper.style.background = `linear-gradient(135deg, ${
+          config.background_color || defaultConfig.background_color
+        } 0%, ${
+          config.secondary_action_color || defaultConfig.secondary_action_color
+        }20 100%)`;
+
+        const heroTitle = document.getElementById("hero-title");
+        heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+        heroTitle.style.color = config.text_color || defaultConfig.text_color;
+
+        const heroSubtitle = document.getElementById("hero-subtitle");
+        heroSubtitle.textContent =
+          config.hero_subtitle || defaultConfig.hero_subtitle;
+        heroSubtitle.style.color =
+          config.secondary_action_color || defaultConfig.secondary_action_color;
+
+        const heroDescription = document.getElementById("hero-description");
+        heroDescription.textContent =
+          config.hero_description || defaultConfig.hero_description;
+
+        const ctaButton = document.getElementById("cta-button");
+        ctaButton.textContent = config.cta_button || defaultConfig.cta_button;
+        ctaButton.style.backgroundColor =
+          config.primary_action_color || defaultConfig.primary_action_color;
+
+        const feature1Title = document.getElementById("feature-1-title");
+        feature1Title.textContent =
+          config.feature_1_title || defaultConfig.feature_1_title;
+        feature1Title.style.color =
+          config.text_color || defaultConfig.text_color;
+
+        const feature1Desc = document.getElementById("feature-1-description");
+        feature1Desc.textContent =
+          config.feature_1_description || defaultConfig.feature_1_description;
+
+        const feature2Title = document.getElementById("feature-2-title");
+        feature2Title.textContent =
+          config.feature_2_title || defaultConfig.feature_2_title;
+        feature2Title.style.color =
+          config.text_color || defaultConfig.text_color;
+
+        const feature2Desc = document.getElementById("feature-2-description");
+        feature2Desc.textContent =
+          config.feature_2_description || defaultConfig.feature_2_description;
+
+        const feature3Title = document.getElementById("feature-3-title");
+        feature3Title.textContent =
+          config.feature_3_title || defaultConfig.feature_3_title;
+        feature3Title.style.color =
+          config.text_color || defaultConfig.text_color;
+
+        const feature3Desc = document.getElementById("feature-3-description");
+        feature3Desc.textContent =
+          config.feature_3_description || defaultConfig.feature_3_description;
+
+        const footerText = document.getElementById("footer-text");
+        footerText.textContent =
+          config.footer_text || defaultConfig.footer_text;
+        footerText.style.color =
+          config.primary_action_color || defaultConfig.primary_action_color;
+
+        const allButtons = document.querySelectorAll(".btn-primary");
+        allButtons.forEach((btn) => {
+          if (btn.id !== "cta-button") {
+            btn.style.backgroundColor =
+              config.secondary_action_color ||
+              defaultConfig.secondary_action_color;
+          }
+        });
+      }
+
+      function mapToCapabilities(config) {
+        return {
+          recolorables: [
+            {
+              get: () =>
+                config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              },
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              },
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              },
+            },
+            {
+              get: () =>
+                config.primary_action_color ||
+                defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              },
+            },
+            {
+              get: () =>
+                config.secondary_action_color ||
+                defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              },
+            },
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined,
+        };
+      }
+
+      function mapToEditPanelValues(config) {
+        return new Map([
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          [
+            "hero_subtitle",
+            config.hero_subtitle || defaultConfig.hero_subtitle,
+          ],
+          [
+            "hero_description",
+            config.hero_description || defaultConfig.hero_description,
+          ],
+          ["cta_button", config.cta_button || defaultConfig.cta_button],
+          [
+            "feature_1_title",
+            config.feature_1_title || defaultConfig.feature_1_title,
+          ],
+          [
+            "feature_1_description",
+            config.feature_1_description || defaultConfig.feature_1_description,
+          ],
+          [
+            "feature_2_title",
+            config.feature_2_title || defaultConfig.feature_2_title,
+          ],
+          [
+            "feature_2_description",
+            config.feature_2_description || defaultConfig.feature_2_description,
+          ],
+          [
+            "feature_3_title",
+            config.feature_3_title || defaultConfig.feature_3_title,
+          ],
+          [
+            "feature_3_description",
+            config.feature_3_description || defaultConfig.feature_3_description,
+          ],
+          ["footer_text", config.footer_text || defaultConfig.footer_text],
+        ]);
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues,
+        });
+      }
+
+      // Chatbot functionality
+      const chatToggle = document.getElementById("chat-toggle");
+      const chatWindow = document.getElementById("chat-window");
+      const chatIcon = document.getElementById("chat-icon");
+      const closeIcon = document.getElementById("close-icon");
+      const chatMessages = document.getElementById("chat-messages");
+      const chatOptions = document.querySelectorAll(".chat-option");
+
+      let isOpen = false;
+
+      chatToggle.addEventListener("click", () => {
+        isOpen = !isOpen;
+
+        if (isOpen) {
+          chatWindow.classList.remove("hidden");
+          chatIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        } else {
+          chatWindow.classList.add("hidden");
+          chatIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        }
+      });
+
+      chatOptions.forEach((option) => {
+        option.addEventListener("click", function () {
+          const buttonText = this.textContent.trim();
+
+          // Add user message
+          const userMessage = document.createElement("div");
+          userMessage.className = "mb-4 text-right";
+          userMessage.innerHTML = `
+          <div class="inline-block p-2.5 sm:p-3 rounded-lg max-w-xs" style="background-color: #4CAF50; color: #ffffff;">
+            <p class="text-xs sm:text-sm">${buttonText}</p>
+          </div>
+        `;
+          chatMessages.appendChild(userMessage);
+
+          // Simulate bot response
+          setTimeout(() => {
+            const botMessage = document.createElement("div");
+            botMessage.className = "mb-4";
+
+            let responseText = "";
+            if (buttonText.includes("productos")) {
+              responseText =
+                "Tenemos una amplia colección de kimonos únicos con bordado sashiko, parches vintage y técnicas de upcycling. ¿Te gustaría conocer más detalles?";
+            } else if (buttonText.includes("ubicación")) {
+              responseText =
+                "Nos encontramos en Toltecas 166, San Pedro de los Pinos, CP 01180. También puedes llamarnos al 56 1067 7516. ¡Te esperamos!";
+            } else if (buttonText.includes("asesor")) {
+              responseText =
+                "Un asesor te contactará pronto. También puedes llamarnos directamente al 56 1067 7516 o visitarnos en nuestra tienda. 😊";
+            }
+
+            botMessage.innerHTML = `
+            <div class="inline-block p-2.5 sm:p-3 rounded-lg max-w-xs" style="background-color: #2196F3; color: #ffffff;">
+              <p class="text-xs sm:text-sm">${responseText}</p>
+            </div>
+          `;
+            chatMessages.appendChild(botMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }, 800);
+
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+      });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9b1cc1e897f1eef2',t:'MTc2NjM3NjUwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
